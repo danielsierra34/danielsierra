@@ -1,0 +1,1564 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+
+<head>
+	<title>Hoja de Vida Daniel Sierra Rincón</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/d3.js"></script>
+	<style type="text/css">
+    #logo{
+      height:50px;
+    }
+    @media only screen and (max-width: 600px) {
+  #logo{
+      height:30px;
+    }
+}
+		.pestana {
+			width: 100px;
+			height: 24px;
+			background-color: black;
+			color: white;
+			cursor: pointer;
+			cursor: hand;
+			font-size: 12px;
+			display: inline-block;
+			line-height: 20px;
+			text-align: center;
+		}
+		
+		p {
+			text-align: justify;
+		}
+		
+		.navbar-top {
+			height: 80px;
+		}
+		
+		.pestana:hover {
+			font-weight: bold;
+		}
+		
+		#listaInfo {
+			display: block !important;
+			list-style: none;
+			padding: 0px;
+			margin: 20px;
+		}
+		
+		#listaInfo ul {
+			padding: 20px;
+		}
+		
+		.panel {
+			margin-top: 0px;
+		}
+		
+		.panel >ul {
+			max-height: 300px;
+			overflow-y: scroll;
+			overflow-x: hidden;
+		}
+		
+		.panel-warning > ul {
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+		
+		.panel-warning h4 {
+			cursor: pointer;
+			cursor: hand;
+		}
+		
+		.panel-warning h4:hover {
+			text-decoration: underline;
+		}
+		
+		.main-diagram {
+			height: 85%;
+			margin-top: 80px;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			z-index: 1;
+			padding-top: 20px;
+			padding-bottom: 70px;
+		}
+		
+		.tab-content {}
+		
+		.navbar {
+			z-index: 2;
+		}
+		
+		.navbar-brand {
+			padding: 10px;
+		}
+		
+		.navbar-brand {
+			font-size: 24px !important;
+		}
+		
+		.navbar-default {
+			background: #282529
+		}
+		
+		.navbar-default .navbar-nav >li>a {
+			color: white;
+		}
+		
+		.navbar-default .navbar-nav .active a {
+			background-color: #00517A;
+			background-image: none;
+			color: white;
+		}
+		
+		.navbar-default .navbar-brand {
+			color: white;
+		}
+		
+		.dropdown-menu {
+			width: 200px !important;
+			padding: 5px;
+		}
+		
+		.bx {
+			display: inline-block;
+			width: 14px;
+			height: 12px;
+			vertical-align: middle;
+			margin-right: 8px;
+			border-radius: 2px;
+		}
+		
+		#b0 {
+			background-color: #003a00
+		}
+		
+		#b1 {
+			background-color: #008000
+		}
+		
+		#b2 {
+			background-color: #6FAC00
+		}
+		
+		#b3 {
+			background-color: #C0FF21
+		}
+		
+		#b4 {
+			background-color: #2A3BDA
+		}
+		
+		#b5 {
+			background-color: #4493EA
+		}
+		
+		#b6 {
+			background-color: #92b7EE
+		}
+		
+		#b7 {
+			background-color: #ff9900
+		}
+		
+		#b8 {
+			background-color: #d92305
+		}
+		
+		.node rect {
+			cursor: move;
+			shape-rendering: crispEdges;
+		}
+		
+		.diagramador {
+			overflow: hidden;
+			height: 100%;
+			border: 6px solid #F2B900;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+		}
+		
+		.node text {
+			text-shadow: 1px 1px 2px #fff;
+			font-size: 0.8em;
+			font-family: sans-serif;
+		}
+		
+		#tooltip {
+			position: absolute;
+			pointer-events: none;
+			font-size: 1em;
+			font-family: sans-serif;
+			padding: 10px;
+			width: auto;
+			height: auto;
+			background-color: #003366;
+			color: #e6e6e6;
+			border-radius: 2px;
+			pointer-events: none;
+			opacity: 0.5;
+		}
+		
+		.value {
+			white-space: pre-line;
+			margin: 0;
+		}
+		
+		#charta,
+		#chartb,
+		#chartc {
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+		
+		#chart,
+		#header,
+		#footer {
+			position: absolute;
+			top: 0;
+		}
+		
+		#header,
+		#footer {
+			z-index: 1;
+			display: block;
+			font-size: 36px;
+			font-weight: 300;
+			text-shadow: 0 1px 0 #fff;
+		}
+		
+		#header.inverted,
+		#footer.inverted {
+			color: #fff;
+			text-shadow: 0 1px 4px #000;
+		}
+		
+		#header {
+			top: 80px;
+			left: 140px;
+			width: 1000px;
+		}
+		
+		#footer {
+			top: 680px;
+			right: 140px;
+			text-align: right;
+		}
+		
+		rect {
+			fill: none;
+			pointer-events: all;
+		}
+		
+		pre {
+			font-size: 18px;
+		}
+		
+		line {
+			stroke: #000;
+			stroke-width: 1.5px;
+		}
+		
+		.string,
+		.regexp {
+			color: #f39;
+		}
+		
+		.keyword {
+			color: #00c;
+		}
+		
+		#circulo {
+			width: 24px;
+			height: 24px;
+			-moz-border-radius: 30px;
+			-webkit-border-radius: 30px;
+			-khtml-border-radius: 30px;
+			border-radius: 30px;
+			display: inline-block;
+			float: left;
+			margin-right: 10px;
+		}
+		
+		.comment {
+			color: #777;
+			font-style: oblique;
+		}
+		
+		.number {
+			color: #369;
+		}
+		
+		.class,
+		.special {
+			color: #1181B8;
+		}
+		
+		a:link,
+		a:visited {
+			color: #000;
+			text-decoration: none;
+		}
+		
+		a:hover {
+			color: #666;
+		}
+		
+		.hint {
+			position: absolute;
+			right: 0;
+			width: 1280px;
+			font-size: 12px;
+			color: #999;
+		}
+		
+		.node {
+			cursor: pointer;
+		}
+		
+		.overlay {
+			background-color: #EEE;
+		}
+		
+		.node circle {}
+		
+		.node circle:hover {
+			fill: #fff;
+			stroke: steelblue;
+			stroke-width: 2px;
+		}
+		
+		.nodetext {}
+		
+		.node text {
+			font-size: 14px;
+			font-family: sans-serif;
+			background-color: red;
+			border: 10px solid black;
+			padding: 10px;
+			max-width: 40px;
+			overflow: hidden;
+		}
+		
+		.link {
+			fill: none;
+			stroke: #ccc;
+			stroke-width: 1.5px;
+		}
+		
+		.templink {
+			fill: none;
+			stroke: red;
+			stroke-width: 3px;
+		}
+		
+		.ghostCircle.show {
+			display: block;
+		}
+		
+		.ghostCircle,
+		.activeDrag .ghostCircle {
+			display: none;
+		}
+	</style>
+	<script>
+    if (window.location.href== "https://www.clinicops.com/") {
+   window.location.href = '/clinicops'; 
+}
+    
+		$(document).delegate('#htmlInformacion a', 'click', function(e) {
+
+			var url = $(this).attr('href');
+			var ext = url.split('.').pop();
+			var pre = url.split(':')[0];
+			if (ext == "pdf" || ext == "png" || ext == "jpg" || ext == "jpeg") {
+				e.preventDefault();
+				$("#detalleDocumento .modal-body").html('<iframe width="100%" height="400px" frameborder="0" scrolling="yes" allowtransparency="true" src="' + url + '"></iframe>');
+				$("#detalleDocumento .modal-title").html($(this).attr('nombre'));
+				$('#detalleNodo').modal('hide');
+				$("#detalleDocumento .modal-body").html('<iframe width="100%" height="400px" frameborder="0" scrolling="yes" allowtransparency="true" src="' + url + '"></iframe>');
+				$('#detalleDocumento').modal('show');
+			}
+			if (pre == "http") {
+				e.preventDefault();
+				window.open(url);
+			}
+
+		});
+
+
+
+
+		$(document).ready(function() {
+
+
+			$("#modeloDatos").click(function() {
+
+				modelob = document.location.href;
+				modelob = modelob.replace(".html", "-b.html");
+
+				window.open(modelob);
+
+
+			});
+
+			$("#atrasDetalleNodo").click(function() {
+				$('#detalleDocumento').modal('hide');
+				$('#detalleNodo').modal('show');
+			})
+
+
+
+
+			// Calculate total nodes, max label length
+			var totalNodes = 0;
+			var maxLabelLength = 0;
+			// variables for drag/drop
+			var selectedNode = null;
+			var draggingNode = null;
+			// panning variables
+			var panSpeed = 200;
+			var panBoundary = 20; // Within 20px from edges will pan when dragging.
+			// Misc. variables
+			var i = 0;
+			var duration = 750;
+			var root;
+
+			// size of the diagram
+			var viewerWidth = $(".main-diagram").width();
+			var viewerHeight = $(".main-diagram").height();
+
+			var tree = d3.layout.tree()
+				.size([viewerHeight, viewerWidth]);
+
+			// define a d3 diagonal projection for use by the node paths later on.
+			var diagonal = d3.svg.diagonal()
+				.projection(function(d) {
+					return [d.y, d.x];
+				});
+
+			// A recursive helper function for performing some setup by walking through all nodes
+
+			function visit(parent, visitFn, childrenFn) {
+				if (!parent) return;
+
+				visitFn(parent);
+
+				var children = childrenFn(parent);
+				if (children) {
+					var count = children.length;
+					for (var i = 0; i < count; i++) {
+						visit(children[i], visitFn, childrenFn);
+					}
+				}
+			}
+
+			// Call visit function to establish maxLabelLength
+			visit(treeData, function(d) {
+				totalNodes++;
+				maxLabelLength = Math.max(d.name.length, maxLabelLength);
+
+			}, function(d) {
+				return d.children && d.children.length > 0 ? d.children : null;
+
+			});
+
+
+			// sort the tree according to the node names
+
+			function treex(data) {
+				if (typeof(data) == 'object') {
+					var ul = $('<ul>');
+					for (var i in data) {
+						ul.append($('<li>').text(i).append(tree(data[i])));
+					}
+					return ul;
+				} else {
+					var textNode = document.createTextNode(' => ' + data);
+					return textNode;
+				}
+			}
+
+			function sortTree() {
+				tree.sort(function(a, b) {
+					return b.name.toLowerCase() < a.name.toLowerCase() ? 1 : -1;
+				});
+			}
+			// Sort the tree initially incase the JSON isn't in a sorted order.
+			/*sortTree();*/
+
+			// TODO: Pan function, can be better implemented.
+
+			function pan(domNode, direction) {
+				var speed = panSpeed;
+				if (panTimer) {
+					clearTimeout(panTimer);
+					translateCoords = d3.transform(svgGroup.attr("transform"));
+					if (direction == 'left' || direction == 'right') {
+						translateX = direction == 'left' ? translateCoords.translate[0] + speed : translateCoords.translate[0] - speed;
+						translateY = translateCoords.translate[1];
+					} else if (direction == 'up' || direction == 'down') {
+						translateX = translateCoords.translate[0];
+						translateY = direction == 'up' ? translateCoords.translate[1] + speed : translateCoords.translate[1] - speed;
+					}
+					scaleX = translateCoords.scale[0];
+					scaleY = translateCoords.scale[1];
+					scale = zoomListener.scale();
+					svgGroup.transition().attr("transform", "translate(" + translateX + "," + translateY + ")scale(" + scale + ")");
+					d3.select(domNode).select('g.node').attr("transform", "translate(" + translateX + "," + translateY + ")");
+					zoomListener.scale(zoomListener.scale());
+					zoomListener.translate([translateX, translateY]);
+					panTimer = setTimeout(function() {
+						pan(domNode, speed, direction);
+					}, 50);
+				}
+			}
+
+			// Define the zoom function for the zoomable tree
+
+			function zoom() {
+				svgGroup.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+			}
+
+
+			// define the zoomListener which calls the zoom function on the "zoom" event constrained within the scaleExtents
+			var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
+
+			// define the baseSvg, attaching a class for styling and the zoomListener
+			var baseSvg = d3.select("#charta").append("svg")
+				.attr("width", viewerWidth)
+				.attr("height", viewerHeight)
+				.attr("class", "overlay")
+				.call(zoomListener);
+
+
+			// Define the drag listeners for drag/drop behaviour of nodes.
+
+			// Helper functions for collapsing and expanding nodes.
+
+			function collapse(d) {
+				if (d.children) {
+					d._children = d.children;
+					d._children.forEach(collapse);
+					d.children = null;
+				}
+			}
+
+			function expand(d) {
+				if (d._children) {
+					d.children = d._children;
+					d.children.forEach(expand);
+					d._children = null;
+				}
+			}
+
+			var overCircle = function(d) {
+				selectedNode = d;
+				updateTempConnector();
+			};
+			var outCircle = function(d) {
+				selectedNode = null;
+				updateTempConnector();
+			};
+
+			// Function to update the temporary connector indicating dragging affiliation
+			var updateTempConnector = function() {
+				var data = [];
+				if (draggingNode !== null && selectedNode !== null) {
+					// have to flip the source coordinates since we did this for the existing connectors on the original tree
+					data = [{
+						source: {
+							x: selectedNode.y0,
+							y: selectedNode.x0
+						},
+						target: {
+							x: draggingNode.y0,
+							y: draggingNode.x0
+						}
+					}];
+				}
+				var link = svgGroup.selectAll(".templink").data(data);
+
+				link.enter().append("path")
+					.attr("class", "templink")
+					.attr("d", d3.svg.diagonal())
+					.attr('pointer-events', 'none');
+
+				link.attr("d", d3.svg.diagonal());
+
+				link.exit().remove();
+			};
+
+			// Function to center node when clicked/dropped so node doesn't get lost when collapsing/moving with large amount of children.
+
+			function centerNode(source) {
+				scale = zoomListener.scale();
+				x = -source.y0;
+				y = -source.x0;
+				x = x * scale + viewerWidth / 2;
+				y = y * scale + viewerHeight / 2;
+				d3.select('g').transition()
+					.duration(duration)
+					.attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
+				zoomListener.scale(scale);
+				zoomListener.translate([x, y]);
+			}
+
+			// Toggle children function
+
+			function toggleChildren(d) {
+				if (d.children) {
+					d._children = d.children;
+					d.children = null;
+				} else if (d._children) {
+					d.children = d._children;
+					d._children = null;
+				}
+				return d;
+			}
+
+			// Toggle children on click.
+
+			function click(d) {
+				if (d3.event.defaultPrevented) return; // click suppressed
+				d = toggleChildren(d);
+				update(d);
+				centerNode(d);
+			}
+
+			function update(source) {
+				// Compute the new height, function counts total children of root node and sets tree height accordingly.
+				// This prevents the layout looking squashed when new nodes are made visible or looking sparse when nodes are removed
+				// This makes the layout more consistent.
+				var levelWidth = [1];
+				var childCount = function(level, n) {
+
+					if (n.children && n.children.length > 0) {
+						if (levelWidth.length <= level + 1) levelWidth.push(0);
+
+						levelWidth[level + 1] += n.children.length;
+						n.children.forEach(function(d) {
+							childCount(level + 1, d);
+						});
+					}
+				};
+				childCount(0, root);
+				var newHeight = d3.max(levelWidth) * 50; // 25 pixels per line  
+				tree = tree.size([newHeight, viewerWidth]);
+
+				// Compute the new tree layout.
+				var nodes = tree.nodes(root).reverse(),
+					links = tree.links(nodes);
+
+				// Set widths between levels based on maxLabelLength.
+				nodes.forEach(function(d) {
+					d.y = (d.depth * (maxLabelLength * 6)); //maxLabelLength * 10px
+					// alternatively to keep a fixed scale one can set a fixed depth per level
+					// Normalize for fixed-depth by commenting out below line
+					// d.y = (d.depth * 500); //500px per level.
+				});
+
+				// Update the nodes…
+				node = svgGroup.selectAll("g.node")
+					.data(nodes, function(d) {
+						return d.id || (d.id = ++i);
+					});
+
+				// Enter any new nodes at the parent's previous position.
+				var nodeEnter = node.enter().append("g")
+					.attr("class", "node")
+					.attr("transform", function(d) {
+						return "translate(" + source.y0 + "," + source.x0 + ")";
+					})
+					.on('click', click);
+
+				nodeEnter.append("circle")
+					.attr('class', 'nodeCircle')
+					.attr("r", 0)
+					.style("fill", function(d) {
+						return d._children ? "lightsteelblue" : "#fff";
+					}).on("click", function(d) {
+						if (d3.event.defaultPrevented) return; // click suppressed
+						$("#circulo").css("background-color", d.color);
+						$("#htmlInformacion").html("");
+						textoLista1 = "";
+						textoLista2 = "";
+						$.each(d.info, function(key, value) {
+
+							if (value.tipo == "Titulo2") {
+								$("#htmlInformacion").append("<h3>" + value.contenido + "</h3>");
+							}
+
+							if (value.tipo == "Parrafo") {
+								$("#htmlInformacion").append("<p class='parrafo'>" + value.contenido + "</p>");
+							}
+
+							if (value.tipo == "Lista1") {
+								textoLista1 = textoLista1 + "<li>" + value.contenido + "</li>";
+							}
+							if (value.tipo == "Lista2") {
+								textoLista2 = textoLista2 + "<li>" + value.contenido + "</li>";
+							}
+
+							if (value.tipo == "Imagen") {
+								$("#lista1").append("<div class='imagen'><img href='" + value.contenido + "'></div>");
+							}
+							if (value.tipo == "Video") {
+								$("#lista1").append("<div class='imagen'><img href='" + value.contenido + "'></div>");
+							}
+
+						});
+
+						$("#htmlInformacion").append("<ul id='lista1'>" + textoLista1 + "</ul>");
+						$("#htmlInformacion").append("<ul id='lista2'>" + textoLista2 + "</ul>");
+
+						$('#detalleNodo .modal-header h4').html(d.name);
+						$('#detalleNodo').modal('show');
+					});
+
+				nodeEnter.append("text")
+					.attr("x", function(d) {
+						return d.children || d._children ? -20 : 20;
+					})
+					.attr("dy", ".35em")
+					.attr('class', 'nodeText')
+					.attr("text-anchor", function(d) {
+						return d.children || d._children ? "end" : "start";
+					})
+					.text(function(d) {
+						return d.name;
+					}).style("fill-opacity", 0);
+
+				// phantom node to give us mouseover in a radius around it
+				nodeEnter.append("circle")
+					.attr('class', 'ghostCircle')
+					.attr("r", 80)
+					.attr("opacity", 0.2) // change this to zero to hide the target area
+					.style("fill", "red")
+					.attr('pointer-events', 'mouseover')
+					.on("mouseover", function(node) {
+						overCircle(node);
+					})
+					.on("mouseout", function(node) {
+						outCircle(node);
+					});
+
+				// Update the text to reflect whether node has children or not.
+				node.select('text')
+					.attr("x", function(d) {
+						return d.children || d._children ? -20 : 20;
+					})
+					.attr("text-anchor", function(d) {
+						return d.children || d._children ? "end" : "start";
+					})
+					.text(function(d) {
+						return d.name;
+					});
+
+				// Change the circle fill depending on whether it has children and is collapsed
+				node.select("circle.nodeCircle")
+					.attr("r", 14).attr("margin-left", "14px")
+
+				.style("fill", function(d) {
+					if (d.info) {
+						if (d.info.length > 0) {
+							return d.color;
+						} else {
+							return "black";
+						}
+					} else {
+						return d.color;
+					}
+
+
+					if (d.info && d.info.length > 0) {
+						return "black";
+					} else {
+
+						return d.color;
+					}
+
+					//return d._children ? "lightsteelblue" : "#fff";
+				});
+
+				// Transition nodes to their new position.
+				var nodeUpdate = node.transition()
+					.duration(duration)
+					.attr("transform", function(d) {
+						return "translate(" + d.y + "," + d.x + ")";
+					});
+
+				// Fade the text in
+				nodeUpdate.select("text")
+					.style("fill-opacity", 1);
+
+				// Transition exiting nodes to the parent's new position.
+				var nodeExit = node.exit().transition()
+					.duration(duration)
+					.attr("transform", function(d) {
+						return "translate(" + source.y + "," + source.x + ")";
+					})
+					.remove();
+
+				nodeExit.select("circle")
+					.attr("r", 0);
+
+				nodeExit.select("text")
+					.style("fill-opacity", 0);
+
+				// Update the links…
+				var link = svgGroup.selectAll("path.link")
+					.data(links, function(d) {
+						return d.target.id;
+					});
+
+				// Enter any new links at the parent's previous position.
+				link.enter().insert("path", "g")
+					.attr("class", "link")
+					.attr("d", function(d) {
+						var o = {
+							x: source.x0,
+							y: source.y0
+						};
+						return diagonal({
+							source: o,
+							target: o
+						});
+					});
+
+				// Transition links to their new position.
+				link.transition()
+					.duration(duration)
+					.attr("d", diagonal);
+
+				// Transition exiting nodes to the parent's new position.
+				link.exit().transition()
+					.duration(duration)
+					.attr("d", function(d) {
+						var o = {
+							x: source.x,
+							y: source.y
+						};
+						return diagonal({
+							source: o,
+							target: o
+						});
+					})
+					.remove();
+
+				// Stash the old positions for transition.
+				nodes.forEach(function(d) {
+					d.x0 = d.x;
+					d.y0 = d.y;
+
+				});
+			}
+
+			// Append a group which holds all nodes and which the zoom Listener can act upon.
+			var svgGroup = baseSvg.append("g");
+
+			// Define the root
+			root = treeData;
+			root.x0 = viewerHeight / 2;
+			root.y0 = 0;
+
+			// Layout the tree initially and center on the root node.
+
+			// Collapse all children of roots children before rendering.
+
+
+			root.children.forEach(function(child) {
+				collapse(child);
+			});
+
+			collapse(root);
+
+			// Layout the tree initially and center on the root node.
+			update(root);
+			centerNode(root);
+
+
+
+
+			/*
+			  $("#collapseAll").click(function(root){
+			      root.children.forEach(function(child){
+			        collapse(child);
+			      });
+			       collapse(root);
+			        update(root);
+			    centerNode(root);
+
+			  });
+
+			$("#cerrarDetalleNodo").click(function(root){
+			  update(root);
+
+			});*/
+
+
+		});
+
+		var treeData =
+
+			{
+				'name': 'Hoja de Vida',
+				'color': '#F2B900',
+				'children': [{
+					'name': 'Perfil Profesional',
+					'color': '#F2B900',
+					'children': [{
+						'name': 'Generalidades',
+						'color': '#F2B900',
+						'info': [{
+							'tipo': 'Parrafo',
+							'contenido': 'Ingeniero Industrial bilingüe con Maestría en Gerencia de Proyectos. 10 años de experiencia en consultoría, dirección y desarrollo de proyectos, productos y servicios en la nube orientados a la automatización de procesos de negocio en Supply Chain & Logistics entre otros. Amplia experiencia en Transformación digital de empresas, Full-stack Devolper (Google Cloud Platform, Front-End, Back-End, Databases, Infraestructure & Mobile). Dirección de equipos de trabajo en proyectos relacionados con RPA (Robotic Proccess Automation), IOT (Internet of Things), BI (Bussiness Inteligence) y desarrollo de software en general.',
+							'adicional': ''
+						}]
+					}, {
+						'name': 'Competencias',
+						'color': '#F2B900',
+						'info': [{
+							'tipo': 'Parrafo',
+							'contenido': 'A lo largo de mi vida profesional y académica he tenido la oportunidad de trabajar en diferentes sectores (Financiero, Talento Humano, Ingeniería Civil, Tecnológico y Creativo) y esto me ha permitido desarrollar una serie de competencias y habilidades que siempre me han permitido dejar grandes cosas en cada lugar.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Abordamiento análitico de Problemas',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Capacitad Crítica',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Creatividad e Innovación',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Autonomía e Independencia',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Decisión acertiva',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Compromiso',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Espiritu Comercial',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Planeación Estratégica Organizacional',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Trabajo en Equipo',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Liderazgo Efectivo de Equipos de Trabajo',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Comunicación Escrita',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Comunicación Verbal Persuasiva',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Diseño de Soluciones Efectivas',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Recursividad',
+							'adicional': ''
+						}]
+					}]
+				}, {
+					'name': 'Habilidades',
+					'color': '#F2B900',
+					'children': [{
+						'name': 'Innovación Tecnológica',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Gerencia de Proyectos',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Simulación de Sistemas',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Simulacion de Procesos de Negocio',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Automatización de Procesos de Negocio',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Optimizacion de Procesos de Negocio',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Desarrollo de Software',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Integración de Sistemas',
+						'color': '#F2B900',
+						'info': [{
+							'tipo': 'Parrafo',
+							'contenido': 'He participado en Proyectos que me han exigido la capacidad de integrar plataformas externas para el envio automatizado de corres, mensajes de texto, pagos en línea, logins y shares.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Facebook API',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Twitter API',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'twilio(SMS) API',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Pagos en Linea API',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'PayU API',
+							'adicional': ''
+						}]
+					}, {
+						'name': 'Cloud Computing',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Distributed Computing',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Web Design & Development',
+						'color': '#F2B900',
+						'info': [{
+							'tipo': 'Parrafo',
+							'contenido': 'Tengo gran facilidad de desarrollar cualquier tipo de página o aplicación web preferiblemente bajo el concepto de Single Page Application donde mediante esquemas creativos de despliegue de información, esta se muestra de manera interactiva a gusto del usuario sin que esta se recargue. Desde computadores hasta moviles, logro adaptabilidad en cualquier tipo de pantalla y dispositivo.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'HTML',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'CSS',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Less',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'SASS Y LESS',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Media Queries',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Javascript-Jquery-Ajax',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'AngularJS',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'HandlebarsJS',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Fundation',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Bootstrap',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'D3js',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Google Charts',
+							'adicional': ''
+						}]
+					}, {
+						'name': 'SEO y SEM',
+						'color': '#F2B900',
+						'info': [{
+							'tipo': 'Parrafo',
+							'contenido': 'Experiencia en diferentes herramientas y estrategias para el posicionamiento de Páginas Web en internet.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'GoogleAdWords',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Google Analitics',
+							'adicional': ''
+						}]
+					}, {
+						'name': 'Marketing Digital',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Front Development',
+						'color': '#F2B900',
+						'info': [{
+							'tipo': 'Lista1',
+							'contenido': 'HTML',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'CSS',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Less',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'SASS Y LESS',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Media Queries',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Javascript-Jquery-Ajax',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'AngularJS',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'HandlebarsJS',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Fundation',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Bootstrap',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'D3js',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Google Charts',
+							'adicional': ''
+						}]
+					}, {
+						'name': 'BackDevelopent',
+						'color': '#F2B900',
+						'info': [{
+							'tipo': 'Lista1',
+							'contenido': 'PHP',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'ASP',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'SQL',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'MySQL',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista2',
+							'contenido': 'My SQLWorkbench',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista2',
+							'contenido': 'PLSQLDeveloper',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista2',
+							'contenido': 'CPANEL',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista2',
+							'contenido': 'CronJobs',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista2',
+							'contenido': 'phpMyAdmin',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista2',
+							'contenido': 'SSH',
+							'adicional': ''
+						}]
+					}, {
+						'name': 'DBA',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'SCRUM',
+						'color': '#F2B900',
+						'info': [{
+							'tipo': 'Parrafo',
+							'contenido': 'Metodología ágil para el desarrollo de software en entornos complejos y cronológicamente ajustados, donde la correcta selección y priorzación de actividades en conjunto con buenas práctivas de desarrollo de software se logran los resultados  esperados en el tiempo estipulado y sin entrar en procesos extenuantes de rediseño y reingenieria.',
+							'adicional': ''
+						}]
+					}, {
+						'name': 'Clean Coding',
+						'color': '#F2B900',
+						'info': [{
+							'tipo': 'Parrafo',
+							'contenido': 'Conjunto de buenas practicas, conceptos, normas y procedimientos que permiten el desarrollo de software ágil y oportuno, para lograr mejor calidad y administrabilidad.',
+							'adicional': ''
+						}]
+					}, {
+						'name': 'Data Mining',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Google Maps Developer',
+						'color': '#F2B900',
+						'info': []
+					}]
+				}, {
+					'name': 'Experiencia Laboral',
+					'color': '#F2B900',
+					'children': [{
+						'name': 'Sintec Consulting',
+						'color': '#F2B900',
+						'info': [{
+							'tipo': 'Parrafo',
+							'contenido': 'Gerente de Soluciones Digitales  ',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Consolidar y liderar el área de innovación capaz de desarrollar productos y servicios digitales disruptivos y escalables con el fin de lograr el reconocimiento tecnológico de la firma en el mercado.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Incorporar las tecnologías de Google Cloud Platform, Internet of Things, Robotic Process Automation, Image & Voice Recognition, Google Maps Development, y Desarrollo de software en general dentro de la firma.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Participar en proyectos de consultoría en temas de desarrollo de software con empresas de sectores Industriales, logísticos, suministro y retail.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Implementación de un proyecto de mejoramiento de productividad en un centro de distribución a través de Internet of Things.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Automatización y sistematización de procesos internos de la firma.',
+							'adicional': ''
+						}]
+					},{
+						'name': 'Puntored (Conexred S.A)',
+						'color': '#F2B900',
+						'info': [{
+							'tipo': 'Parrafo',
+							'contenido': 'Consultor en Innovación y desarrollo Tecnológico',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Planeación, diseño y desarrollo de una plataforma en línea para el control y monitoreo en tiempo real de las ventas en una red de 40,000 comercios.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Planeación, diseño y desarrollo de una aplicación IOS / Android para ser utilizado a lo largo de 400 distribuidores con el fin de consolidar alrededor de 30 procesos de negocio, brindar información en tiempo real sus clientes entre otras necesidades de la operación.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Planeación, diseño y desarrollo de una aplicación web con Google Maps para administrar la operación diaria de la empresa y monitoreo en tiempo real GPS de la fuerza comercial.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Integración de Tecnologpias nuevas tales como Google Cloud Platform, Google Maps, Appery Mobile y Highcharts en el área de tecnología',
+							'adicional': ''
+						}]
+					},{
+						'name': 'Davinci Technologies ',
+						'color': '#F2B900',
+						'info': [{
+							'tipo': 'Parrafo',
+							'contenido': 'Consultor en innovación y Desarrollo Tecnológico',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Consultor TI y Automatización de Procesos, Diseño de Sistemas Computacionales e Innovación y Desarrollo de productos Tecnológicos. ',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Liderar y desarrollar productos y servicios que generan valor para los procesos internos de la compañía y sus clientes.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Implementación e integración de Zoho CRM con otros sistemas de la organización.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': '•	Automatización del sistema de cartera con Google Apps Scripts.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': '•	Montaje de Infraestructura de Computo de la empresa en Google Cloud Platform.',
+							'adicional': ''
+						}]
+					},{
+						'name': 'Fundación Social (Banco Caja Social)',
+						'color': '#F2B900',
+						'info': [{
+							'tipo': 'Parrafo',
+							'contenido': 'Consultor de Proyectos en Tecnología, Automatización de Procesos, Diseño de Sistemas Computacionales e Innovación y Desarrollo de productos Tecnológicos.',
+							'adicional': ''
+						}, {
+							'tipo': 'Parrafo',
+							'contenido': 'Liderar, dirigir, facilitar, recomendar y desarrollar proyectos de mejora de procesos críticos y de alto impacto, que permitan incrementar la productividad, eficiencia  y competitividad, de acuerdo con los lineamientos, normas y procedimientos de la Entidad.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Sistema de Geo-localización con Google Maps para la Administración de Personal en las sucursales del Banco Caja Social.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Sistema Estratégico de Gestión de Clima Organizacional.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Generador Automatizado de Reportes de Clima Organizacional que se entregan a cada una de las 800 áreas de la Fundación social',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Sistema Automatizado Web de Análisis Demográfico de Suficiencia y Supervivencia',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Sistema Automatizado Web para la definición, administración y difamación de los Mapas Estructurales de los Procesos de la entidad.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Sistema Automatizado Web para la administración Documental.',
+							'adicional': ''
+						}, {
+							'tipo': 'Lista1',
+							'contenido': 'Sistema Automatizado Web para la visualización y administración de la planta de personal.',
+							'adicional': ''
+						}]
+					}, {
+						'name': 'Colmedia Comunicaciones',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Gattaca Web Lab',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Universidad de los Andes',
+						'color': '#F2B900',
+						'info': [{
+							'tipo': 'Parrafo',
+							'contenido': 'Ingeniero en Investigación y Desarrollo',
+							'adicional': ''
+						}, {
+							'tipo': 'Parrafo',
+							'contenido': 'Llevar a cabo una investigación enfocada en el desarrollo de un proyecto innovador en tecnología que consistió en el desarrollo de un software en la nube para el apoyo en la toma de decisiones en la gerencia de proyectos de construcción de obras civiles y minería para la participación de la Universidad en congresos Internacionales.',
+							'adicional': ''
+						}, {
+							'tipo': 'Parrafo',
+							'contenido': 'Apoyo a las actividades académicas del departamento de Ing. Civil de la Universidad de los Andes en conjunto con monitorías académicas y clases complementarias en las áreas de Finanzas, Programación y Presupuestos, Construcción en Infraestructura Vial entre otras labores administrativas.',
+							'adicional': ''
+						}, {
+							'tipo': 'Parrafo',
+							'contenido': 'Participe como expositor en el Winter Simulation Conference llevado a cabo en Phoenix Arizona 2011 con la presentación de un Artículo Científico y un Software en la nube para el pronóstico y análisis de sistemas de excavación y transporte en obras civiles y de minería.',
+							'adicional': ''
+						}]
+					}]
+				}, {
+					'name': 'Formación Académica',
+					'color': '#F2B900',
+					'children': [{
+						'name': 'Maestria en Gerencia de Proyectos',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Ingeniería Industrial',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Colegio Corazonista',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'English as Second Language (Canadá)',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Gimnasio Británico',
+						'color': '#F2B900',
+						'info': []
+					}]
+				}, {
+					'name': 'Herramientas Computacionales',
+					'color': '#F2B900',
+					'children': [{
+						'name': 'Gerencia de Proyectos',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Ingenieria Industrial',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Web Design',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Web Developer',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Software Developer',
+						'color': '#F2B900',
+						'info': []
+					}, {
+						'name': 'Otras',
+						'color': '#F2B900',
+						'info': []
+					}]
+				}]
+			};
+	</script>
+
+
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header navbar-top">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+				<a class="navbar-brand" href="#"><img src="css/2.png" id="logo" ></a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#infoContacto" data-toggle="modal" data-target="#detalleContacto">Contácto</a></li>
+			</div>
+	</nav>
+	<div class="container-fluid main-diagram">
+		<div class="diagramador">
+
+			<div id="charta" oncontextmenu="return false;"></div>
+		</div>
+	</div>
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container-fluid">
+			<!--<a class="navbar-brand pull-right" href="#"><img src="danielsierra.com/css/construccion.png" height="40"></a>-->
+		</div>
+	</nav>
+	<a id="mostrarDetalleNodo" class="hidden" data-toggle="modal" data-target="#detalleNodo"></a>
+	<div class="modal fade" id="detalleNodo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div id="circulo"></div>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				</div>
+				<div class="modal-body">
+					<div id="htmlInformacion">
+						<ul id="listaInfo" class="panel-group">
+
+						</ul>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+					<button type="button" class="btn btn-danger" data-dismiss="modal" id="cerrarDetalleNodo">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade bs-example-modal-lg" id="detalleDocumento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body">
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal" id="cerrarDetalleNodo">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade bs-example-modal-lg" id="detalleContacto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Informaciòn de Contacto</h4>
+				</div>
+				<div class="modal-body">
+					<p><b>Nombre:</b> Daniel Sierra Rincòn</p>
+					<p><b>Edad:</b> 33 años</p>
+					<p><b>Telèfono:</b>311-5131750</p>
+					<p><b>Mail:</b>danielsierra34@gmail.com</p>
+					<p><b>Ubicaciòn:</b>Bogota-Colombia</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal" id="cerrarDetalleNodo">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

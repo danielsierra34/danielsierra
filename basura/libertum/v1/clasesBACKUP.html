@@ -1,0 +1,55 @@
+###COMO VALIDAR UN FORMULARIO 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset='UTF-8'>
+	<title>JS</title>
+</head>
+
+<body>
+	<form action="" name="formulario" method="get">
+		<!-- ACTION="..." ES A DONDE SE ENVIA LA INFORMACION/LA PAGINA QUE LOS VA A RECIVIR.  -->
+
+		<input type="text" name="nombre" id="nombrex" masLenght="30" placeholder="NOMBRE"></input>
+		<br>
+		<input type="radio" name="setxo" id="hombre" value="Hombre">HOMBRE
+		<input type="radio" name="setxo" id="mujer" value="Mujer">MUJER
+		<br>
+		<input type="checkbox" name="terminos" id="terminos" required>ACEPTO LOS TERMINOS Y CONDICIONES
+		<br>
+		<input type="submit" id="botonAcepto" name="boton" value="Enviar">
+		<!-- SUBMIT ENVIA DATOS -->
+	</form>
+	<script>
+		(function() {
+			var formulario = document.getElementsByName('formulario')[0],
+				elementos = formulario.elements,
+				boton = document.getElementById('botonAcepto');
+
+			var validarNombre = function(e) {
+				if (formulario.nombre.value == 0) {
+					alert("Escriba algo pendejo");
+					e.preventDefault();
+					}
+			};
+	    
+			var validarRadio = function(e){
+				if (formulario.setxo[0].checked == true || formulario.setxo[1].checked == true){
+				} else {
+						alert("QUE TENGA SETXO");
+					e.preventDefault();
+					}
+				};
+			
+			var validar = function(e) {	//LA FUNCION VALIDAR EJECUTA OTRAS FUNCIONES
+				validarNombre(e);
+				validarRadio(e);
+			};
+			formulario.addEventListener("submit", validar);  // SE LEE DESDE ACA, SE AGREGA UN EVENTOLISTENER DE TIPO SUBMMIT Y QUE SE EJECUTE LA FUNCION VALIDAR
+		}())
+	</script>
+</body>
+
+</html>
